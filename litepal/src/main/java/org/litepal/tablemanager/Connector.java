@@ -107,7 +107,7 @@ public class Connector {
 			String dbName = litePalAttr.getDbName();
 			if ("external".equalsIgnoreCase(litePalAttr.getStorage())) {
 				dbName = LitePalApplication.getContext().getExternalFilesDir("") + "/databases/" + dbName;
-			} else if (!"internal".equalsIgnoreCase(litePalAttr.getStorage()) && !TextUtils.isEmpty(litePalAttr.getStorage())) {
+			} else if ("internal".equalsIgnoreCase(litePalAttr.getStorage()) || TextUtils.isEmpty(litePalAttr.getStorage())) {
                 // internal or empty means internal storage, neither or them means sdcard storage
                 String dbPath = Environment.getExternalStorageDirectory().getPath() + "/" + litePalAttr.getStorage();
                 dbPath = dbPath.replace("//", "/");
